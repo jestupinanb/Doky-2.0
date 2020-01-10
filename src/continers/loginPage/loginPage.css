@@ -1,0 +1,28 @@
+#bg {
+    position: fixed; 
+    /* top: 0; 
+    left: 0;  */
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.usericonimg{
+  border-radius: 40px;
+  width: 15%;
+  margin-left: 42.5%;
+}
+
+@media only screen and (max-width:768px){
+  .usericonimg{
+    width: 20%;
+    margin-left: 40%;
+  }
+}
+
+@media only screen and (max-width:375px){
+  .usericonimg{
+    width: 25%;
+    margin-left: 37.5%;
+  }
+}
