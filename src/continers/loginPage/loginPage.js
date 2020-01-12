@@ -8,9 +8,8 @@ import './loginPage.css';
 import background from "../../images/background.webp";
 import user_icon from "../../images/user_icon.webp";
 
-
-/* import { LoginController } from '../../../controllers/login_controller';
-import { UserController } from '../../../controllers/user_controller'; */
+import { LoginController } from '../../database/controllers/login_controller';
+import { UserController } from '../../database/controllers/user_controller';
 
 class LoginPage extends Component {
 
@@ -25,8 +24,8 @@ class LoginPage extends Component {
 
 
 
-        /* this.loginController = new LoginController();
-        this.userController = new UserController(); */
+        this.loginController = new LoginController();
+        this.userController = new UserController();
 
 
         this.handleChange = this.handleChange.bind(this);
@@ -42,7 +41,7 @@ class LoginPage extends Component {
             // That method will be the responsible for start a session into the browser's cookies,
             // so we don't need any more for checking if the auth was successful
 
-            /* await this.loginController.signInWithEmailAndPassword(this.state.email, this.state.password); */
+            await this.loginController.signInWithEmailAndPassword(this.state.email, this.state.password);
         } catch (error) {
             // In the case that there is an error, we will log it 
             console.log(error);
