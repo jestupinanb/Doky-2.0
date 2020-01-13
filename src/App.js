@@ -1,32 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter as Router, Route, withRouter, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, withRouter, Redirect, useHistory, Switch } from 'react-router-dom'
 import Landingpage from './continers/landingpage/Landingpage';
 import { LandingUpperBar } from './components/landingUpperBar/landingUpperBar';
 import { LoginPage } from './continers/loginPage/loginPage';
 import RegisterPage from './continers/register/register';
 import fire from './database/config/Fire'
-import { UserController } from './database/controllers/user_controller';
 import { fetchUsers } from './store/actions/user';
-import { HomeConsumer } from './continers/consumer/home/HomeConsumer';
+import ConsumerNavbar from './components/consumerNavbar/consumerNavbar';
+import HomeConsumer from './continers/consumer/home/HomeConsumer';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const user = useSelector(state => state.user.user)
-  return (
-    <Route
-      {...rest}
-      render={
-        props => {
-          if (user === null) {
-            return <Component {...props} />
-          } else {
-            return //<Redirect to={{ pathname: '/consumidor', state: { from: props.location } }} />
-          }
-        }
-      }
-    />
-  )
-}
+
 
 const HomeRoute = ({ component: Component, ...rest }) => {
   const user = useSelector(state => state.user.user)
@@ -36,9 +20,9 @@ const HomeRoute = ({ component: Component, ...rest }) => {
       render={
         props => {
           if (user === null) {
-            return <LandingUpperBar {...props} />
+            return <Component {...props} {...rest} />
           } else {
-            return <HomeConsumer {...props} />
+            return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
           }
         }
       }
@@ -46,10 +30,61 @@ const HomeRoute = ({ component: Component, ...rest }) => {
   )
 }
 
+const DefaultPathRoute = ({ component: Component, componentConsumidor: ComponentConsumidor, componentPrestador: ComponentPrestador, ...rest }) => {
+  const user = useSelector(state => state.user.user)
+  return (
+    <Route
+      {...rest}
+      render={
+        props => {
+          if (user === null) {
+            return Component ? <Component {...props} /> : null
+          } else if (user.tipo === 'Consumidor') {
+            return ComponentConsumidor ? <ComponentConsumidor {...props} /> : null
+          } else if (user.tipo === 'Prestador') {
+            return ComponentPrestador ? <ComponentPrestador {...props} /> : null
+          } else {
+            console.log("Undefined user or user type")
+          }
+        }
+      }
+    />
+  )
+}
 
-function App(props) {
+const UsersRoute = ({ component: Component, componentConsumidor: ComponentConsumidor, componentPrestador: ComponentPrestador, ...rest }) => {
+  const user = useSelector(state => state.user.user)
+  return (
+    <Route
+      {...rest}
+      render={
+        props => {
+          if (user === null) {
+            return Component ? <Component {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          } else if (user.tipo === 'Consumidor') {
+            return ComponentConsumidor ? <ComponentConsumidor {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          } else if (user.tipo === 'Prestador') {
+            return ComponentPrestador ? <ComponentPrestador {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          } else {
+            console.log("Undefined user or user type")
+          }
+        }
+      }
+    />
+  )
+}
+
+function Probando({name}){
+  return(
+    <div>{name}</div>
+  )
+}
+
+function App() {
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   useEffect(
     () => {
@@ -64,15 +99,28 @@ function App(props) {
     }, []
   )
 
+
+  /* Rules */
+  /* -Every path needs an exact path for redirect at least  */
   return (
     <>
-      <HomeRoute path="/" component={LandingUpperBar} />
-      <ProtectedRoute exact path="/" component={Landingpage} />
-      <ProtectedRoute path="/ingresar" component={LoginPage} />
-      <ProtectedRoute path="/registrarse" component={RegisterPage} />
-      <Route path="/consumidor" component={RegisterPage} />
+      <Switch>
+        <HomeRoute exact strict path="/ingresar/ingresar" component={Landingpage} />
+        <DefaultPathRoute path="/" component={LandingUpperBar} componentConsumidor={ConsumerNavbar} componentPrestador={null} />
+      </Switch>
+      <Switch>
+        <DefaultPathRoute exact path="/" component={Landingpage} componentConsumidor={HomeConsumer} componentPrestador={null} />
+        <HomeRoute path="/ingresar" component={Probando} name={'dinamic ingresar'} />
+        <HomeRoute path="/registrarse" component={RegisterPage} />
+        <Redirect to='/' />
+      </Switch>
+      <Switch>
+        <HomeRoute exact path="/ingresar" component={Probando} name={'exact ingresar'} />
+        <HomeRoute path="/ingresar/ing" component={Probando} name={'ingresar ing'} />
+        <Redirect from='/ingresar/*' to='/' />
+      </Switch>
     </>
   );
 }
 
-export default withRouter(App);
+export default App;

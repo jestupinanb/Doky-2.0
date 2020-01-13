@@ -3,10 +3,10 @@ import './Card.css';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom'
 
+//cartas usadas en los servicios
 function CardSombra(props) {
     const {history} = props
     return (
-
       <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
         <div className="div-img" >
           <img className="img" src={props.foto} title={props.titulo} alt={props.titulo}></img>
