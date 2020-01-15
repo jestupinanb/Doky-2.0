@@ -70,7 +70,7 @@ export class LoginController {
         // It will be responsible for deleting the Authentication Cookies into the browser.
         //
         // For that, I will use the repository too.
-        this.firebaseAuthRepository.logOut();
+        return this.firebaseAuthRepository.logOut();
     }
 
 }

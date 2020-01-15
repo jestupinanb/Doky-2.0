@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter as Router, Route, withRouter, Redirect, useHistory, Switch } from 'react-router-dom'
+import { Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import Landingpage from './continers/landingpage/Landingpage';
 import { LandingUpperBar } from './components/landingUpperBar/landingUpperBar';
 import { LoginPage } from './continers/loginPage/loginPage';
@@ -11,16 +11,17 @@ import ConsumerNavbar from './components/consumerNavbar/consumerNavbar';
 import HomeConsumer from './continers/consumer/home/HomeConsumer';
 
 
-
-const HomeRoute = ({ component: Component, ...rest }) => {
+const HomeRoute = ({ component: Component, children, ...rest }) => {
   const user = useSelector(state => state.user.user)
   return (
     <Route
       {...rest}
       render={
         props => {
+          console.log("rest")
+          console.log(rest)
           if (user === null) {
-            return <Component {...props} {...rest} />
+            return <Component {...props} />
           } else {
             return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
           }
@@ -30,61 +31,12 @@ const HomeRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-const DefaultPathRoute = ({ component: Component, componentConsumidor: ComponentConsumidor, componentPrestador: ComponentPrestador, ...rest }) => {
-  const user = useSelector(state => state.user.user)
-  return (
-    <Route
-      {...rest}
-      render={
-        props => {
-          if (user === null) {
-            return Component ? <Component {...props} /> : null
-          } else if (user.tipo === 'Consumidor') {
-            return ComponentConsumidor ? <ComponentConsumidor {...props} /> : null
-          } else if (user.tipo === 'Prestador') {
-            return ComponentPrestador ? <ComponentPrestador {...props} /> : null
-          } else {
-            console.log("Undefined user or user type")
-          }
-        }
-      }
-    />
-  )
-}
-
-const UsersRoute = ({ component: Component, componentConsumidor: ComponentConsumidor, componentPrestador: ComponentPrestador, ...rest }) => {
-  const user = useSelector(state => state.user.user)
-  return (
-    <Route
-      {...rest}
-      render={
-        props => {
-          if (user === null) {
-            return Component ? <Component {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-          } else if (user.tipo === 'Consumidor') {
-            return ComponentConsumidor ? <ComponentConsumidor {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-          } else if (user.tipo === 'Prestador') {
-            return ComponentPrestador ? <ComponentPrestador {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-          } else {
-            console.log("Undefined user or user type")
-          }
-        }
-      }
-    />
-  )
-}
-
-function Probando({name}){
-  return(
-    <div>{name}</div>
-  )
-}
 
 function App() {
-
+  const user = useSelector(state => state.user.user)
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const NotFoundUrl = <> Esta pagina no existe! :(</>
 
   useEffect(
     () => {
@@ -96,31 +48,39 @@ function App() {
         );
       }
       onAuthStateChanged()
-    }, []
+    }, [dispatch]
   )
 
+  if (useRouteMatch('/about')) {
+    return <Route path='/about'><div>¡Ey! Estamos desarrollando la pagina de about!</div> </Route>
+  }
 
-  /* Rules */
-  /* -Every path needs an exact path for redirect at least  */
-  return (
-    <>
-      <Switch>
-        <HomeRoute exact strict path="/ingresar/ingresar" component={Landingpage} />
-        <DefaultPathRoute path="/" component={LandingUpperBar} componentConsumidor={ConsumerNavbar} componentPrestador={null} />
-      </Switch>
-      <Switch>
-        <DefaultPathRoute exact path="/" component={Landingpage} componentConsumidor={HomeConsumer} componentPrestador={null} />
-        <HomeRoute path="/ingresar" component={Probando} name={'dinamic ingresar'} />
-        <HomeRoute path="/registrarse" component={RegisterPage} />
-        <Redirect to='/' />
-      </Switch>
-      <Switch>
-        <HomeRoute exact path="/ingresar" component={Probando} name={'exact ingresar'} />
-        <HomeRoute path="/ingresar/ing" component={Probando} name={'ingresar ing'} />
-        <Redirect from='/ingresar/*' to='/' />
-      </Switch>
-    </>
-  );
+  switch (user && user.tipo) {
+    case 'Consumidor':
+      return (
+        <>
+          <Route path='/'> <ConsumerNavbar /> </Route>
+          <Switch>
+            <Route exact path='/'> <HomeConsumer /> </Route>
+            <Route> {NotFoundUrl} </Route>
+          </Switch>
+        </>
+        )
+    case 'Prestador':
+      return {NotFoundUrl}
+    default:
+      return (
+        <>
+          <Route path='/'> <LandingUpperBar /> </Route>
+          <Switch>
+            <Route exact path='/'> <Landingpage /> </Route>
+            <Route exact path='/registrarse'> <RegisterPage /> </Route>
+            <Route exact path='/ingresar'> <LoginPage /> </Route>
+            <Route> {NotFoundUrl} </Route>
+          </Switch>
+        </>
+      )
+  }
 }
 
 export default App;
