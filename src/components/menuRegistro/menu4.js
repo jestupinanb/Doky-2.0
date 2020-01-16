@@ -1,47 +1,36 @@
-import React, { Component } from 'react';
-/* 
-import { LoginController } from '../../../../controllers/login_controller';
-import { UserController } from '../../../../controllers/user_controller' 
-*/
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { LINK_HOME } from '../../links';
+import { LoginController } from '../../database/controllers/login_controller';
+import { UserController } from '../../database/controllers/user_controller' 
 
-class Menu4 extends Component {
-    constructor(props) {
-        super(props);
-        // We will use the LoginController for registration, so I'll add it to this class
-        /* this.loginController = new LoginController();
-        this.userController = new UserController(); */
-        this.signup = this.signup.bind(this);
+async function signup(history,nombres, apellidos, fechaDeNacimiento, ciudad, barrio, celular, telefono, email, password, role) {
+    try {
+        const loginController = new LoginController()
+        const userController = new UserController()
+        const user = await loginController.createAccountWithEmailAndPassword(email, password);
+        await userController.createUser(user.uid,
+            {
+                correo: email,
+                tipo: role,
+                nombres: nombres,
+                apellidos: apellidos,
+                fecha: fechaDeNacimiento,
+                ciudad: ciudad,
+                barrio: barrio,
+                celular: celular,
+                telefono: telefono
+            });
+            history.push(LINK_HOME)
+    } catch (error) {
+        console.log(error);
     }
+}
 
-    async signup(event) {
-        try {
-            // We prevent the default cases so avoid submitting the form
-            event.preventDefault();
-            // Here we will use the method in the controller for signing up
-            // That method will be the responsible for start a session into the browser's cookies once the user
-            // is created, so we don't need any more for checking if the auth was successful
-            const user = await this.loginController.createAccountWithEmailAndPassword(this.props.email, this.props.password);
-            /* await this.userController.createUser(user.uid,
-                {
-                correo:this.props.email,
-                tipo: this.props.role, 
-                nombres: this.props.nombres, 
-                apellidos:this.props.apellidos, 
-                fecha:this.props.fecha_nacimiento, 
-                ciudad:this.props.ciudad,
-                barrio:this.props.barrio, 
-                celular:this.props.celular,
-                telefono:this.props.telefono
-            }); */
-        } catch (error) {
-            // In the case that there is an error, we will log it in the console
-            console.log(error);
-        }
-    }
-
-    render() {
-        return (
-            <div>
+function Menu4({ setIdPage, nombres, apellidos, fechaDeNacimiento, email, password, role, ciudad, barrio, celular, telefono }) {
+    const history= useHistory()
+    return (
+        <div>
             <ul id="progressbar">
                 <li className="active">Información básica</li>
                 <li className="active">Contacto</li>
@@ -49,70 +38,69 @@ class Menu4 extends Component {
                 <li className="active">Confirmar Formulario</li>
             </ul>
             <div className="card WhiteColor" style={{ margin: '20px' }}>
-                <div className = 'container'>
-                    <div className = 'row'>
-                        <div className = 'col-12'>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12'>
                             <p className="BigTextFont">Confirmar Formulario</p>
-                            <p className="MediumTextFont TextDarkMainColor">Información básica</p> 
+                            <p className="MediumTextFont TextDarkMainColor">Información básica</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Nombres:</p>
-                            <p className="ultraSmallTextFont">{this.props.nombres}</p>
+                            <p className="ultraSmallTextFont">{nombres}</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Apellidos:</p>
-                            <p className="ultraSmallTextFont">{this.props.apellidos}</p>
+                            <p className="ultraSmallTextFont">{apellidos}</p>
                         </div>
-                        <div className = 'col-12'>
+                        <div className='col-12'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Fecha Nacimiento:</p>
-                            <p className="ultraSmallTextFont">{this.props.fecha_nacimiento}</p>
+                            <p className="ultraSmallTextFont">{fechaDeNacimiento}</p>
                         </div>
                     </div>
-                    <div className = 'row'>
-                        <div className = 'col-12'>
+                    <div className='row'>
+                        <div className='col-12'>
                             <p className="MediumTextFont TextDarkMainColor">Contacto</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Ciudad:</p>
-                            <p className="ultraSmallTextFont">{this.props.ciudad}</p>
+                            <p className="ultraSmallTextFont">{ciudad}</p>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Barrio:</p>
-                            <p className="ultraSmallTextFont">{this.props.barrio}</p>
+                            <p className="ultraSmallTextFont">{barrio}</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Celular:</p>
-                            <p className="ultraSmallTextFont">{this.props.celular}</p>
+                            <p className="ultraSmallTextFont">{celular}</p>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Telefono:</p>
-                            <p className="ultraSmallTextFont">{this.props.telefono}</p>
+                            <p className="ultraSmallTextFont">{telefono}</p>
                         </div>
                     </div>
-                    <div className = 'row'>
-                        <div className = 'col-12'>
+                    <div className='row'>
+                        <div className='col-12'>
                             <p className="MediumTextFont TextDarkMainColor">Inicio Sesión</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Correo:</p>
-                            <p className="ultraSmallTextFont">{this.props.email}</p>
+                            <p className="ultraSmallTextFont">{email}</p>
                         </div>
-                        <div className = 'col-6'>
+                        <div className='col-6'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Contraseña:</p>
-                            <p className="ultraSmallTextFont">{this.props.password}</p>
+                            <p className="ultraSmallTextFont">{password}</p>
                         </div>
-                        <div className = 'col-12'>
+                        <div className='col-12'>
                             <p className="ultraSmallTextFont TextAltMainColor userparamtext">Rol:</p>
-                            <p className="ultraSmallTextFont">{this.props.role}</p>
+                            <p className="ultraSmallTextFont">{role}</p>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <div className="mb-3">
-                    <button type="button" className="btn btn-outline-success mr-1" onClick={() => { this.props.RegisterPageHandler('menu3') }}>Anterior</button>
-                    <button type="button" className="btn btn-outline-warning ml-1" onClick={this.signup}>
+                    <button type="button" className="btn btn-outline-success mr-1" onClick={() => setIdPage('menu3')}>Anterior</button>
+                    <button type="button" className="btn btn-outline-warning ml-1" onClick={() => signup(history,nombres, apellidos, fechaDeNacimiento, ciudad, barrio, celular, telefono, email, password, role)}>
                         Finalizar
                     </button>
                 </div>
             </div>
         </div>
-        );
-    }
+    );
 }
 
-export { Menu4 };
+export default Menu4;
