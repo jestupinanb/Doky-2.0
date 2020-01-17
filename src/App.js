@@ -9,6 +9,8 @@ import fire from './database/config/Fire'
 import { fetchUsers } from './store/actions/user';
 import ConsumerNavbar from './components/consumerNavbar/consumerNavbar';
 import HomeConsumer from './continers/consumer/home/HomeConsumer';
+import PaseosPage from './continers/paseos/paseos_page';
+import { PaseosVisualizar } from './continers/paseos/paseos_visualizar';
 
 
 const HomeRoute = ({ component: Component, children, ...rest }) => {
@@ -62,6 +64,8 @@ function App() {
           <Route path='/'> <ConsumerNavbar /> </Route>
           <Switch>
             <Route exact path='/'> <HomeConsumer /> </Route>
+            <Route exact path='/paseos'> <PaseosPage/> </Route>
+            <Route exact path='/paseos/:id'> <PaseosVisualizar/> </Route>
             <Route> {NotFoundUrl} </Route>
           </Switch>
         </>
