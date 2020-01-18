@@ -18,14 +18,15 @@ export class UserController {
         return this.firebaseCreateRepository.writeCollectionIdDefined('usuarios', id, data);
     }
 
-    async getTipoUsuario(email) {
-        return this.firebaseReadRepository.readCollection("usuarios").doc(email).get().then(
+    async getTipoUsuario() {
+        const user = this.getUserId();
+        return this.firebaseReadRepository.readCollection("usuarios").doc(user).get().then(
             querySnapshot => {
                 return querySnapshot.data();
             }
         )
     }
-
+ 
     async getInformacionUsuario(userId) {
         return this.firebaseReadRepository.readCollection("usuarios").doc(userId).get().then(
             querySnapshot => {

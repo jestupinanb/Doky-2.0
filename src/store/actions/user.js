@@ -21,12 +21,13 @@ export const usersRequest = () =>{
     }
 }
 
-export const fetchUsers = (user) =>{
+export const fetchUsers = () =>{
     return async (dispatch) =>{
         dispatch(usersRequest())
+        let userController = new UserController();
+        const user = userController.getUserId();
         if(user){
             try{
-                let userController = new UserController();
                 const userData = await userController.getTipoUsuario(user.uid);
                 dispatch(userSuccess(userData))
             }catch(error){

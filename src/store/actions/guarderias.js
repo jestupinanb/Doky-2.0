@@ -7,10 +7,10 @@ export const fetchGuarderiasRequest = () =>{
     }
 }
 
-export const fetchGuarderiasSuccess = GUARDERIAS =>{
+export const fetchGuarderiasSuccess = guarderias =>{
     return{
         type:FETCH_GUARDERIAS_SUCCESS,
-        payload:GUARDERIAS
+        payload:guarderias
     }
 }
 

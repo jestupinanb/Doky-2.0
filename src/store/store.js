@@ -5,8 +5,10 @@ import thunk from 'redux-thunk'
 import page from './reducers/page'
 import paseos from './reducers/paseos'
 import guarderias from './reducers/guarderias'
+import veterinarias from './reducers/veterinarias'
+import saltos from './reducers/saltos'
 
-const rootReducer = combineReducers({user,page,paseos,guarderias})
+const rootReducer = combineReducers({user,page,paseos,guarderias,veterinarias,saltos})
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 

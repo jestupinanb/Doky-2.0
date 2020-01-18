@@ -13,7 +13,12 @@ import PaseosPage from './continers/paseos/paseos_page';
 import PaseosVisualizar  from './continers/paseos/paseos_visualizar';
 import GuarderiasVisualizar from './continers/guarderia/guarderia_visualizar';
 import GuarderiasPage from './continers/guarderia/guarderia_page';
-import { LINK_GUARDERIAS, LINK_PASEOS } from './links';
+import { LINK_GUARDERIAS, LINK_PASEOS, LINK_VETERINARIAS, LINK_SALTOS, LINK_PERFIL } from './links';
+import VeterinariasPage from './continers/veterinarias/veterinarias_page';
+import VeterinariasVisualizar from './continers/veterinarias/veterinarias_visualizar';
+import SaltosPage from './continers/saltos/saltos_page';
+import SaltosVisualizar from './continers/saltos/salto_visualizar';
+import Perfil from './continers/PerfilConsumidor/perfil';
 
 const HomeRoute = ({ component: Component, children, ...rest }) => {
   const user = useSelector(state => state.user.user)
@@ -70,6 +75,11 @@ function App() {
             <Route exact path='/paseos/:id'> <PaseosVisualizar/> </Route>
             <Route exact path={LINK_GUARDERIAS}> <GuarderiasPage/> </Route>
             <Route exact path={LINK_GUARDERIAS+"/:id"}> <GuarderiasVisualizar/> </Route>
+            <Route exact path={LINK_VETERINARIAS}> <VeterinariasPage/> </Route>
+            <Route exact path={LINK_VETERINARIAS+"/:id"}> <VeterinariasVisualizar/> </Route>
+            <Route exact path={LINK_SALTOS}> <SaltosPage/> </Route>
+            <Route exact path={LINK_SALTOS+"/:id"}> <SaltosVisualizar/> </Route>
+            <Route exact path={LINK_PERFIL}> <Perfil/> </Route>
             <Route> {NotFoundUrl} </Route>
           </Switch>
         </>

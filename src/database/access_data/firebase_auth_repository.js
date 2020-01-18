@@ -50,7 +50,7 @@ export class FirebaseAuthRepository {
     }
 
     getUserId() {
-        return fire.auth().currentUser.uid;
+        return fire.auth().currentUser && fire.auth().currentUser.uid;
     }
 
 }

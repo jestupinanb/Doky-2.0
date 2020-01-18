@@ -9,6 +9,7 @@ import { LoginController } from '../../database/controllers/login_controller';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { showSidedrawer } from '../../store/actions/page';
+import { LINK_PERFIL } from '../../links';
 
 // This method is executed once the user clicks on the "shop icon".
 async function logout(dispatch) {
@@ -34,7 +35,7 @@ function SideDrawer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 www">
-                            <Link to={`/Perfil`}><button className="thebuttcons WhiteColor">Perfil </button></Link>
+                            <Link to={LINK_PERFIL}><button className="thebuttcons WhiteColor">Perfil </button></Link>
                             <hr />
                         </div>
                         <div className="col-12 www">

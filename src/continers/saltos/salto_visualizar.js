@@ -44,25 +44,25 @@ const estrellas = (calificacion) => {
 }
 
 
-function GuarderiasVisualizar() {
+function SaltosVisualizar() {
     const location = useLocation()
 
-    const guarderia = useSelector(state => state.guarderias.guarderias.find(data => data.id === location.state.id))
+    const salto = useSelector(state => state.saltos.saltos.find(data => data.id === location.state.id))
 
     let barrio, descripcion, horario, id, img, localidad, precio, puntuacion, duracion, nombre;
 
-    if (guarderia) {
-        barrio = guarderia.barrio;
-        descripcion = guarderia.descripcion;
-        horario = guarderia.horario;
-        id = guarderia.id;
-        img = guarderia.img;
-        nombre = guarderia.nombre;
-        localidad = guarderia.localidad;
-        precio = guarderia.precio;
-        if (guarderia.puntuacion) { puntuacion = parseFloat(guarderia.puntuacion.toFixed(1)) }
+    if (salto) {
+        barrio = salto.barrio;
+        descripcion = salto.descripcion;
+        horario = salto.horario;
+        id = salto.id;
+        img = salto.img;
+        nombre = salto.nombre;
+        localidad = salto.localidad;
+        precio = salto.precio;
+        if (salto.puntuacion) { puntuacion = parseFloat(salto.puntuacion.toFixed(1)) }
         else { puntuacion = 0 }
-        duracion = guarderia.duracionMax;
+        duracion = salto.duracionMax;
     }
 
     return (
@@ -82,7 +82,7 @@ function GuarderiasVisualizar() {
                         descripcion={descripcion}
                         duracion={duracion}
                         estrellas={estrellas(puntuacion)}
-                        cantidadpuntuacion={guarderia && guarderia.cantidadpuntuacion}
+                        cantidadpuntuacion={salto && salto.cantidadpuntuacion}
                     />
                 </div>
 
@@ -110,7 +110,7 @@ function GuarderiasVisualizar() {
     );
 }
 
-export default GuarderiasVisualizar;
+export default SaltosVisualizar;
 
 
 function InformacionBasica(props) {
@@ -156,10 +156,7 @@ function InformacionBasica(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6 col-md-6">
-                        <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Cantidad de calificaciones:</p>
-                        <p className="MediumTextFont">{props.cantidadpuntuacion}</p>
-                    </div>
+
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-6">
@@ -168,11 +165,7 @@ function InformacionBasica(props) {
                         <p className="MediumTextFont">{props.precio}</p>
 
                     </div>
-                    <div className="col-12 col-md-6">
 
-                        <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Horario:</p>
-                        <p className="MediumTextFont">{props.horario}</p>
-                    </div>
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-6">
