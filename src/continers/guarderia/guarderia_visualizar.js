@@ -1,4 +1,4 @@
-    import React, { Component, useState } from 'react';
+import React from 'react';
 
 /* import '../../../global_css/textcolors.css';
 import '../../../global_css/colors.css';
@@ -6,7 +6,6 @@ import '../../../global_css/fonts.css'; */
 import { ServiciosDispController } from '../../database/controllers/serviciosDisponibles_controller'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-
 const estrellas = (calificacion) => {
     if (0 < calificacion && calificacion < 0.5) {
         return "valoracion val-0"
@@ -45,53 +44,25 @@ const estrellas = (calificacion) => {
 }
 
 
-function PaseosVisualizar() {
-    /*     async loadUserInfo() {
-            try {
-                let InfoSend = [];
-                let id_Paseo = this.props.location.state.id;
-                const id = this.props.location.state.id_user;
-                var getController = new ServiciosDispController();
-                const Info = await getController.readPasesosFullInfo(id, id_Paseo);
-                InfoSend.push(Info);
-                this.setState({ PaseoInfo: InfoSend });
-    
-            } catch (error) {
-                console.log(error)
-            }
-        } */
-
-
-    /*     renderRedirect = () => {
-            if (this.state.redirect) {
-                return (<Redirect
-                    to={{
-                        //pathname: "/mis-servicios/guarderia/" + `${this.props.location.state.id_user}`,
-                        pathname: "/MisServicios",
-                        state: this.state.redirect
-                    }}
-                />)
-            }
-        } */
-        
+function GuarderiasVisualizar() {
     const location = useLocation()
 
-    const paseo = useSelector(state =>state.paseos.paseos.find(data => data.id===location.state.id))
+    const guarderia = useSelector(state => state.guarderias.guarderias.find(data => data.id === location.state.id))
 
     let barrio, descripcion, horario, id, img, localidad, precio, puntuacion, duracion, nombre;
 
-    if(paseo){
-        barrio = paseo.barrio;
-        descripcion = paseo.descripcion;
-        horario = paseo.horario;
-        id = paseo.id;
-        img = paseo.img;
-        nombre = paseo.nombre;
-        localidad = paseo.localidad;
-        precio = paseo.precio;
-        if (paseo.puntuacion) { puntuacion = parseFloat(paseo.puntuacion.toFixed(1)) }
+    if (guarderia) {
+        barrio = guarderia.barrio;
+        descripcion = guarderia.descripcion;
+        horario = guarderia.horario;
+        id = guarderia.id;
+        img = guarderia.img;
+        nombre = guarderia.nombre;
+        localidad = guarderia.localidad;
+        precio = guarderia.precio;
+        if (guarderia.puntuacion) { puntuacion = parseFloat(guarderia.puntuacion.toFixed(1)) }
         else { puntuacion = 0 }
-        duracion = paseo.duracionMax;
+        duracion = guarderia.duracionMax;
     }
 
     return (
@@ -120,7 +91,7 @@ function PaseosVisualizar() {
                             style={{ marginRight: 10 }}
                             onClick={
                                 async () => {
-{/*                                     const props = this.props.location.state;
+                                    {/*                                     const props = this.props.location.state;
                                     const serviciosDispController = new ServiciosDispController();
                                     await serviciosDispController.writeIniciarServicioPaseo(props.id_user, props.id);
                                     this.setState({
@@ -138,7 +109,7 @@ function PaseosVisualizar() {
     );
 }
 
-export default PaseosVisualizar;
+export default GuarderiasVisualizar;
 
 
 function InformacionBasica(props) {
@@ -184,22 +155,18 @@ function InformacionBasica(props) {
                             </div>
                         </div>
                     </div>
+                    <div className="col-6 col-md-6">
+                        <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Cantidad de calificaciones:</p>
+                        <p className="MediumTextFont">{props.cantidad_calificaciones}</p>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-12 col-md-6">
 
                         <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Precio:</p>
                         <p className="MediumTextFont">{props.precio}</p>
 
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-6 col-md-6">
-                        <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Duración maxima:</p>
-                        <p className="MediumTextFont">{props.duracion}</p>
-                    </div>
-
-                </div>
-                <div className="row">
-
                     <div className="col-12 col-md-6">
 
                         <p className="ultraSmallTextoFont TextAltMainColor userparamtext">Horario:</p>

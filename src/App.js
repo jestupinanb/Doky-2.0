@@ -10,8 +10,10 @@ import { fetchUsers } from './store/actions/user';
 import ConsumerNavbar from './components/consumerNavbar/consumerNavbar';
 import HomeConsumer from './continers/consumer/home/HomeConsumer';
 import PaseosPage from './continers/paseos/paseos_page';
-import { PaseosVisualizar } from './continers/paseos/paseos_visualizar';
-
+import PaseosVisualizar  from './continers/paseos/paseos_visualizar';
+import GuarderiasVisualizar from './continers/guarderia/guarderia_visualizar';
+import GuarderiasPage from './continers/guarderia/guarderia_page';
+import { LINK_GUARDERIAS, LINK_PASEOS } from './links';
 
 const HomeRoute = ({ component: Component, children, ...rest }) => {
   const user = useSelector(state => state.user.user)
@@ -64,8 +66,10 @@ function App() {
           <Route path='/'> <ConsumerNavbar /> </Route>
           <Switch>
             <Route exact path='/'> <HomeConsumer /> </Route>
-            <Route exact path='/paseos'> <PaseosPage/> </Route>
+            <Route exact path={LINK_PASEOS}> <PaseosPage/> </Route>
             <Route exact path='/paseos/:id'> <PaseosVisualizar/> </Route>
+            <Route exact path={LINK_GUARDERIAS}> <GuarderiasPage/> </Route>
+            <Route exact path={LINK_GUARDERIAS+"/:id"}> <GuarderiasVisualizar/> </Route>
             <Route> {NotFoundUrl} </Route>
           </Switch>
         </>
