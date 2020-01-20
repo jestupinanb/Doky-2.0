@@ -6,7 +6,7 @@ import '../../global_css/fonts.css';
 */
 import './loginPage.css';
 import background from "../../images/background.webp";
-import user_icon from "../../images/user_icon.webp";
+import user_icon from "../../images/user-icon.webp";
 
 import { LoginController } from '../../database/controllers/login_controller';
 import { useHistory } from 'react-router-dom';

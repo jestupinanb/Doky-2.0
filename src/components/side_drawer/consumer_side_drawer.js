@@ -4,7 +4,7 @@ import React from 'react';
 import '../../../../global_css/colors.css';
 import '../../../../global_css/fonts.css'; */
 import './consumer_side_drawer.css';
-import icon from "./images/navbaricon.jpg";
+import icon from "../../images/user-icon.webp";
 import { LoginController } from '../../database/controllers/login_controller';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,14 +22,14 @@ async function logout(dispatch) {
  
 function SideDrawer() {
         const sideDrawer = useSelector(state => state.page.sideDrawer)
+        const user = useSelector(state=>state.user.user)
         const dispatch = useDispatch();
-        
         return (
             <nav className={sideDrawer ? 'side-drawer-cons open':'side-drawer-cons'}>
                 <br />
                 <h1 className="textcenter BigTextFont">Funciones Consumidor</h1>
                 <br />
-                <img align="middle" alt="" src={icon} className="conssideimg"></img>
+                <img align="middle" alt="" src={ user.foto ||icon} className="conssideimg"></img>
                 <br />
                 <hr />
                 <div className="container">

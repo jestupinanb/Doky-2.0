@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import './backdrop.css'
 import SideDrawer from '../side_drawer/consumer_side_drawer';
 import { showSidedrawer } from '../../store/actions/page';
-import shop from '../../images/perro_doki.ico';
+/* import '../../images/' */
+import shop from '../../images/user-icon.webp';
 
 function Backdrop() {
     const dispatch = useDispatch();
@@ -14,17 +15,18 @@ function Backdrop() {
         <div className="backdrop-consumer" onClick={() => dispatch(showSidedrawer())}></div>
     );
 }
-
-function DrawerToggleButton() {
+ 
+function DrawerToggleButton(props) {
     const dispatch = useDispatch()
     return (
         <button className="MediumTextFont thelogbutton" onClick={() => dispatch(showSidedrawer())}>
-            <img src={shop} className="justify-content-end logo-size" alt="logo" ></img>
+            <img src={props.user.foto || shop} className="justify-content-end logo-size" alt="logo" ></img>
         </button>
     );
 }
 
 function Navbar() {
+    const user = useSelector(state=>state.user.user)
     return (
         <div className="Navegation LandingBar">
             <div className="d-flex bd-highlight MainGradient align-items-center">
@@ -40,7 +42,7 @@ function Navbar() {
                 <div className="p-2 bd-highlight"><button className=" btn btn-outline-light my-2 my-sm-0 d-none d-sm-block font-weight-bolder" type="submit">Buscar</button>
                 </div>
                 <div className="ml-auto p-2 bd-highlight">
-                    <DrawerToggleButton />
+                    <DrawerToggleButton user={user} />
                 </div>
             </div>
         </div>

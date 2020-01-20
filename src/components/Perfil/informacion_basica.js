@@ -1,4 +1,5 @@
 import React from 'react'
+import './perfil.css';
 
 function InformacionBasica(props) {
     return (

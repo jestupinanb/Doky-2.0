@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../../global_css/textcolors.css';
 import '../../global_css/colors.css';
 import '../../global_css/fonts.css';
-import './perfil.css';
+/* import './perfil.css'; */
 import interesesjson from './json/intereses.json';
 import { GeneralCards } from './components_perfil/card/generalcard';
 import { UserController } from '../../database/controllers/user_controller'

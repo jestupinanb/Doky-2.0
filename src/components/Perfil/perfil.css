@@ -23,7 +23,7 @@ div.show-image {
 
 .hover-img{
     position: absolute;
-    top: 74%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
