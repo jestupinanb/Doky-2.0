@@ -7,8 +7,10 @@ import paseos from './reducers/paseos'
 import guarderias from './reducers/guarderias'
 import veterinarias from './reducers/veterinarias'
 import saltos from './reducers/saltos'
+import mascotas from './reducers/mascotas'
+import services from './reducers/services'
 
-const rootReducer = combineReducers({user,page,paseos,guarderias,veterinarias,saltos})
+const rootReducer = combineReducers({user,page,paseos,guarderias,veterinarias,saltos,mascotas,services})
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 

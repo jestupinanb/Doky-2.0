@@ -1,0 +1,68 @@
+.rightMessage{
+    text-align: right;
+    padding: 2%;
+    margin-left: 15%;
+    -webkit-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+   -moz-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+   box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+   margin-top: 2%;
+   border-radius: 15px;
+}
+.leftMessage{
+    text-align: left;
+     padding: 2%;
+     margin-right: 15%;
+     -webkit-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    margin-top: 2%;
+    border-radius: 15px;
+}
+
+.ContainerChat{
+    max-height: 300px;
+    position: relative;
+    overflow-y: scroll;
+    padding: 3%;
+    
+   
+}
+
+.containerChatTotal{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.ContainerInfo{
+    -webkit-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 13px -15px rgba(0,0,0,0.75);
+    margin: 2%;
+}
+
+.consusmerimgsevpage{
+    width: 250px;
+    height: 250px;
+    border-radius: 530px;
+}
+
+@media only screen and (max-width:1440px){
+    .consusmerimgsevpage{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .consusmerimgsevpage{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .consusmerimgsevpage{
+        width: 150px;
+        height: 150px;
+    }   
+}

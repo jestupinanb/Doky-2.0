@@ -1,0 +1,20 @@
+{
+    "0":{
+        "data": "Hola",
+        "userId": "z7V7uer4WrOrfhXqFlfgcWeqtru1"
+    },
+    "1":{
+        "data": "Hola, ¿cómo estás?",
+        "userId": "ykVCdGcdjCS0KY7kqSMDEcY9Pfd2"
+    },
+
+    "2":{
+        "data": "Bien y tu?",
+        "userId": "z7V7uer4WrOrfhXqFlfgcWeqtru1"
+    },
+
+    "3":{
+        "data": "Bien",
+        "userId": "ykVCdGcdjCS0KY7kqSMDEcY9Pfd2"
+    }
+}

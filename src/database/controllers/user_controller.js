@@ -26,7 +26,7 @@ export class UserController {
             }
         )
     }
- 
+  
     async getInformacionUsuario(userId) {
         return this.firebaseReadRepository.readCollection("usuarios").doc(userId).get().then(
             querySnapshot => {

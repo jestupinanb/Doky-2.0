@@ -1,5 +1,4 @@
 import React from 'react';
-import './consumerNavbar.css';
 import '../../global_css/colors.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +7,7 @@ import SideDrawer from '../side_drawer/consumer_side_drawer';
 import { showSidedrawer } from '../../store/actions/page';
 /* import '../../images/' */
 import shop from '../../images/user-icon.webp';
+import './consumerNavbar.css';
 
 function Backdrop() {
     const dispatch = useDispatch();
@@ -58,6 +58,7 @@ function ConsumerNavbar() {
             <Navbar />
             <SideDrawer />
             {sideDrawer ? <Backdrop /> : null}
+            <div style={{marginTop:"66px"}} ></div>
         </>
     );
 }

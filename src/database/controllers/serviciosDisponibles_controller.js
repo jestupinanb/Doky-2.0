@@ -94,7 +94,7 @@ const readBasicInfoInciarServicio = async (userId, idPrestador, idServicio, read
     return { user: user, prestador: prestador, servicio: servicio };
 }
 
-
+ 
 const readServiciosIniciadosConsumidor = async (idUser) => {
     let result = [];
     const firebaseReadRepository = new FirebaseReadRepository();
@@ -105,8 +105,8 @@ const readServiciosIniciadosConsumidor = async (idUser) => {
         if (doc.id === idUser) {
             const servicioRef = await doc.ref.parent.parent.get();
             if(servicioRef.exists){
-                const consumidor = await userController.getInfomracionUsuario(doc.id);
-                const prestador = await userController.getInfomracionUsuario(doc.ref.parent.parent.parent.parent.id);
+                const consumidor = await userController.getInformacionUsuario(doc.id);
+                const prestador = await userController.getInformacionUsuario(doc.ref.parent.parent.parent.parent.id);
                 const servicio = await infoServicio(servicioRef);
                 result.push({ servicio: servicio, consumidor: consumidor, tipo: doc.ref.parent.parent.parent.parent.parent.parent.id, prestador: prestador,paht:doc.ref.parent.parent.path ,doc:await doc.ref.parent.parent.get()});
             }
@@ -536,7 +536,7 @@ export class ServiciosDispController {
     async readServiciosIniciadosConsumidor(){
         let servicios = [];
         let userId = this.firebaseAuthRepository.getUserId();
-        return servicios.concat(await readServiciosIniciadosConsumidor(userId,"veterinaria"))
+        return servicios.concat(await readServiciosIniciadosConsumidor(userId))
     }
 
     //Devuelve todos los servicios del mismo tipo que tenga publicados el usuario
