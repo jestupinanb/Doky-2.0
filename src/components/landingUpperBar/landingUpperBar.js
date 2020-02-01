@@ -58,10 +58,10 @@ function LandingUpperBar() {
                                 placeholder="Contraseña"
                                 aria-label="Contraseña"
                                 aria-describedby="basic-addon1" />
-                            <button type="button" className="btn btn-outline-light mr-2 font-weight-bolder d-none d-md-inline" onClick={() => login(email, password, history)}>
+                            <button type="button" className="btn btn-outline-light mr-xl-2 mr-1 font-weight-bolder d-none d-md-inline" onClick={() => login(email, password, history)}>
                                 Ingresar
                             </button>
-                            <Link to={LINK_INGRESAR} type="button" className="btn btn-outline-light mr-2 font-weight-bolder d-md-none">
+                            <Link to={LINK_INGRESAR} type="button" className="btn btn-outline-light mr-1 font-weight-bolder d-md-none">
                                 Ingresar
                             </Link>
                             <Link to={LINK_REGISTRARSE} type="button" className="btn btn-outline-light mr-2 font-weight-bolder">
