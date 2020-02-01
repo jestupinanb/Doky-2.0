@@ -1,1 +1,0 @@
-export const SHOW_SIDE_DRAWER = 'SHOW_SIDE_DRAWER'
