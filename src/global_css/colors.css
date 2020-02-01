@@ -34,6 +34,5 @@
 }
 
 .MainGradient{
-    background: rgb(47,115,39);
-    background: linear-gradient(90deg, rgba(47,115,39,1) 0%, rgba(59,180,65,1) 50%, rgba(41,195,47,1) 100%);
+    background: #359434;
 } 

@@ -1,3 +1,4 @@
+export const LINK_ABOUT = '/about'
 export const LINK_HOME = '/'
 export const LINK_INGRESAR = '/ingresar'
 export const LINK_REGISTRARSE = '/registrarse'

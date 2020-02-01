@@ -33,6 +33,11 @@
     font-size: 2em;
 }
 
+.MdHugeTextFont{
+    font: sans-serif;
+    font-size: 3em;
+}
+
 .HugeTextFont{
     font: sans-serif;
     font-size: 4em;

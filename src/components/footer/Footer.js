@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../global_css/textcolors.css';
 import '../../global_css/colors.css';
-import '../../global_css/fonts.css'; 
+import '../../global_css/fonts.css';
 import firebase from '../../images/firebase.webp'
 import react from '../../images/react.webp'
 import instagram from '../../images/instagram.webp'
@@ -10,7 +10,7 @@ import linkedin from '../../images/linkedin.webp'
 
 export default function Footer(props) {
     return (
-        <div className="MainGradient mt-5 pb-3 pt-3">
+        <div className="MainGradient pb-3 pt-3">
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-4 textcenter mb-2">
@@ -36,17 +36,19 @@ export default function Footer(props) {
                     </div>
                     <div className="col-12 col-md-4 textcenter mb-2">
                         <h4 className="TextWhiteColor mb-3">Nuevas Funcionalidades</h4>
-                        <div className="d-flex justify-content-center">
-                            <span className="oi oi-eye mt-1 mr-2" title="person" aria-hidden="true"></span>
-                            <p className="TextWhiteColor TitleTextFont">Posibilidad de acceder a tus mascotas</p>
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <span className="oi oi-laptop mt-1 mr-2" title="person" aria-hidden="true"></span>
-                            <p className="TextWhiteColor TitleTextFont">Nueva interfaz para crear servicios</p>
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <span className="oi oi-wifi mt-1 mr-2" title="person" aria-hidden="true"></span>
-                            <p className="TextWhiteColor TitleTextFont">Mejoras en el rendimiento de la pagina</p>
+                        <div className="justify-content-left">
+                            <div className="d-flex ">
+                                <span className="oi oi-eye mt-1 mr-2" title="person" aria-hidden="true"></span>
+                                <p className="TextWhiteColor TitleTextFont">Posibilidad de acceder a tus mascotas</p>
+                            </div>
+                            <div className="d-flex">
+                                <span className="oi oi-laptop mt-1 mr-2" title="person" aria-hidden="true"></span>
+                                <p className="TextWhiteColor TitleTextFont">Nueva interfaz para crear servicios</p>
+                            </div>
+                            <div className="d-flex">
+                                <span className="oi oi-wifi mt-1 mr-2" title="person" aria-hidden="true"></span>
+                                <p className="TextWhiteColor TitleTextFont">Mejoras en el rendimiento de la pagina</p>
+                            </div>
                         </div>
                     </div>
                 </div>

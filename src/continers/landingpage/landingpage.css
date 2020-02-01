@@ -1,6 +1,6 @@
-.landingheadcont{
+/* .landingheadcont{
     position: relative;
-}
+} */
 
 .landingheadimg{
     filter: brightness(40%);
@@ -8,9 +8,9 @@
 
 .landingheadinfo{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 66px;
+    /* left: 50%;    
+    transform: translate(-50%, -50%); */
 }
 
 .theselect{
