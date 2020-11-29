@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d25d2cd83dd350c1fc3762edc819468",
+    "revision": "509b0b413ef7faee6122cbbb301e42d1",
     "url": "/Doky-Redux/index.html"
   },
   {
-    "revision": "652704f16fa26a257a97",
+    "revision": "1b8a5a21bfa16da2f152",
     "url": "/Doky-Redux/static/css/main.03c1ac50.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Doky-Redux/static/js/2.d475c403.chunk.js.LICENSE"
   },
   {
-    "revision": "652704f16fa26a257a97",
-    "url": "/Doky-Redux/static/js/main.747d07bb.chunk.js"
+    "revision": "1b8a5a21bfa16da2f152",
+    "url": "/Doky-Redux/static/js/main.b90b1878.chunk.js"
   },
   {
     "revision": "67fb1ab99d55b63d377f",

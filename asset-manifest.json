@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Doky-Redux/static/css/main.03c1ac50.chunk.css",
-    "main.js": "/Doky-Redux/static/js/main.747d07bb.chunk.js",
-    "main.js.map": "/Doky-Redux/static/js/main.747d07bb.chunk.js.map",
+    "main.js": "/Doky-Redux/static/js/main.b90b1878.chunk.js",
+    "main.js.map": "/Doky-Redux/static/js/main.b90b1878.chunk.js.map",
     "runtime-main.js": "/Doky-Redux/static/js/runtime-main.dd177c3a.js",
     "runtime-main.js.map": "/Doky-Redux/static/js/runtime-main.dd177c3a.js.map",
     "static/js/2.d475c403.chunk.js": "/Doky-Redux/static/js/2.d475c403.chunk.js",
     "static/js/2.d475c403.chunk.js.map": "/Doky-Redux/static/js/2.d475c403.chunk.js.map",
     "index.html": "/Doky-Redux/index.html",
-    "precache-manifest.80bb3feb30d019bc6952fd1122d7ffbf.js": "/Doky-Redux/precache-manifest.80bb3feb30d019bc6952fd1122d7ffbf.js",
+    "precache-manifest.38f46363e0bde58de3d44bc17a7d1281.js": "/Doky-Redux/precache-manifest.38f46363e0bde58de3d44bc17a7d1281.js",
     "service-worker.js": "/Doky-Redux/service-worker.js",
     "static/css/main.03c1ac50.chunk.css.map": "/Doky-Redux/static/css/main.03c1ac50.chunk.css.map",
     "static/js/2.d475c403.chunk.js.LICENSE": "/Doky-Redux/static/js/2.d475c403.chunk.js.LICENSE",
@@ -46,6 +46,6 @@
     "static/js/runtime-main.dd177c3a.js",
     "static/js/2.d475c403.chunk.js",
     "static/css/main.03c1ac50.chunk.css",
-    "static/js/main.747d07bb.chunk.js"
+    "static/js/main.b90b1878.chunk.js"
   ]
 }

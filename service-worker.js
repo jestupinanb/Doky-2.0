@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Doky-Redux/precache-manifest.80bb3feb30d019bc6952fd1122d7ffbf.js"
+  "/Doky-Redux/precache-manifest.38f46363e0bde58de3d44bc17a7d1281.js"
 );
 
 self.addEventListener('message', (event) => {
