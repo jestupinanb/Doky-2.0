@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Doky-Redux/static/css/main.03c1ac50.chunk.css",
-    "main.js": "/Doky-Redux/static/js/main.f30643ed.chunk.js",
-    "main.js.map": "/Doky-Redux/static/js/main.f30643ed.chunk.js.map",
-    "runtime-main.js": "/Doky-Redux/static/js/runtime-main.fd35a087.js",
-    "runtime-main.js.map": "/Doky-Redux/static/js/runtime-main.fd35a087.js.map",
-    "static/js/2.5248a298.chunk.js": "/Doky-Redux/static/js/2.5248a298.chunk.js",
-    "static/js/2.5248a298.chunk.js.map": "/Doky-Redux/static/js/2.5248a298.chunk.js.map",
+    "main.js": "/Doky-Redux/static/js/main.747d07bb.chunk.js",
+    "main.js.map": "/Doky-Redux/static/js/main.747d07bb.chunk.js.map",
+    "runtime-main.js": "/Doky-Redux/static/js/runtime-main.dd177c3a.js",
+    "runtime-main.js.map": "/Doky-Redux/static/js/runtime-main.dd177c3a.js.map",
+    "static/js/2.d475c403.chunk.js": "/Doky-Redux/static/js/2.d475c403.chunk.js",
+    "static/js/2.d475c403.chunk.js.map": "/Doky-Redux/static/js/2.d475c403.chunk.js.map",
     "index.html": "/Doky-Redux/index.html",
-    "precache-manifest.24820b7057536746401f4bf667c039de.js": "/Doky-Redux/precache-manifest.24820b7057536746401f4bf667c039de.js",
+    "precache-manifest.80bb3feb30d019bc6952fd1122d7ffbf.js": "/Doky-Redux/precache-manifest.80bb3feb30d019bc6952fd1122d7ffbf.js",
     "service-worker.js": "/Doky-Redux/service-worker.js",
     "static/css/main.03c1ac50.chunk.css.map": "/Doky-Redux/static/css/main.03c1ac50.chunk.css.map",
-    "static/js/2.5248a298.chunk.js.LICENSE": "/Doky-Redux/static/js/2.5248a298.chunk.js.LICENSE",
+    "static/js/2.d475c403.chunk.js.LICENSE": "/Doky-Redux/static/js/2.d475c403.chunk.js.LICENSE",
     "static/media/background.webp": "/Doky-Redux/static/media/background.5ce4a032.webp",
     "static/media/backgroundRegister.webp": "/Doky-Redux/static/media/backgroundRegister.1623d41d.webp",
     "static/media/facebook.webp": "/Doky-Redux/static/media/facebook.01bc83e7.webp",
@@ -43,9 +43,9 @@
     "static/media/veterinaria.jpg": "/Doky-Redux/static/media/veterinaria.aeb80614.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fd35a087.js",
-    "static/js/2.5248a298.chunk.js",
+    "static/js/runtime-main.dd177c3a.js",
+    "static/js/2.d475c403.chunk.js",
     "static/css/main.03c1ac50.chunk.css",
-    "static/js/main.f30643ed.chunk.js"
+    "static/js/main.747d07bb.chunk.js"
   ]
 }
